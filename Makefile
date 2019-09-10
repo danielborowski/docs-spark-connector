@@ -5,6 +5,7 @@ PRODUCTION_URL="https://docs.mongodb.com"
 STAGING_BUCKET=docs-mongodb-org-staging
 PRODUCTION_BUCKET=docs-mongodb-org-prod
 PREFIX=spark-connector
+PROJECT=spark-connector
 REPO_DIR=$(shell pwd)
 
 # Parse our published-branches configuration file to get the name of
