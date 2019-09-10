@@ -50,10 +50,6 @@ publish: ## Builds this branch's publishable HTML and other artifacts under buil
 	giza make publish
 	if [ ${GIT_BRANCH} = master ]; then mut-redirects config/redirects -o build/public/.htaccess; fi
 
-stage: html ## Stages the previously built HTML artifacts to the staging URL with the prefix above, your username, and the git branch appended.
-	mut-publish build/${GIT_BRANCH}/html ${STAGING_BUCKET} --prefix=${PREFIX} --stage ${ARGS}
-	@echo "Hosted at ${STAGING_URL}/${PREFIX}/${USER}/${GIT_BRANCH}/index.html"
-
 fake-deploy: ## Deploys the DIR (dirhtml) artifacts generated from "publish" to the staging bucket. Mimics production deployment by using the same arguments as "deploy".
 	mut-publish build/public/${GIT_BRANCH} ${STAGING_BUCKET} --prefix=${PREFIX}/${GIT_BRANCH} --deploy --verbose  --redirects build/public/.htaccess --dry-run ${ARGS}
 	@echo "Hosted at ${STAGING_URL}/${PREFIX}/index.html"
