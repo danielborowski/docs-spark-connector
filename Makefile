@@ -5,6 +5,7 @@ PRODUCTION_URL="https://docs.mongodb.com"
 STAGING_BUCKET=docs-mongodb-org-staging
 PRODUCTION_BUCKET=docs-mongodb-org-prod
 PREFIX=spark-connector
+REPO_DIR=$(shell pwd)
 
 # Parse our published-branches configuration file to get the name of
 # the current "stable" branch. This is weird and dumb, yes.
@@ -18,6 +19,22 @@ help: ## Show this help message
 	@echo
 	@echo 'Variables'
 	@printf "  \033[36m%-18s\033[0m %s\n" 'ARGS' 'Arguments to pass to mut-publish'
+
+next-gen-html:
+	# snooty parse and then build-front-end
+	echo "k10t3mDLEk4fwtTi" | snooty build ${REPO_DIR} 'mongodb+srv://andrew:@cluster0-ylwlz.mongodb.net/test?retryWrites=true' || exit 0;
+	cp -r ${REPO_DIR}/../snooty ${REPO_DIR};
+	cd snooty; \
+	touch .env.production; \
+	echo "GATSBY_SITE=${PROJECT}" >> .env.production; \
+	echo "PARSER_USER=${USER}" >> .env.production; \
+	echo "PARSER_BRANCH=${GIT_BRANCH}" >> .env.production; \
+	npm run build; \
+	cp -r ${REPO_DIR}/snooty/public ${REPO_DIR};
+
+stage: ## Host online for review
+	mut-publish public ${STAGING_BUCKET} --prefix=${PROJECT} --stage ${ARGS}
+	@echo "Hosted at ${STAGING_URL}/${PROJECT}/${USER}/${GIT_BRANCH}/"
 
 html: ## Builds the html files
 	giza make html
