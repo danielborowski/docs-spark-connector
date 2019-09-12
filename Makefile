@@ -26,6 +26,9 @@ help: ## Show this help message
 
 next-gen-html:
 	# snooty parse and then build-front-end
+	echo '-------cred0-0-0-------';
+	echo ${SNOOTY_DB_USR};
+	echo ${SNOOTY_DB_PWD};
 	echo ${SNOOTY_DB_PWD} | snooty build ${REPO_DIR} "mongodb+srv://${SNOOTY_DB_USR}:@cluster0-ylwlz.mongodb.net/snooty?retryWrites=true" || exit 0;
 	cp -r ${REPO_DIR}/../snooty ${REPO_DIR};
 	cd snooty; \
