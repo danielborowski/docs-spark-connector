@@ -7,7 +7,6 @@ PRODUCTION_BUCKET=docs-mongodb-org-prod
 PREFIX=spark-connector
 PROJECT=spark-connector
 REPO_DIR=$(shell pwd)
-
 SNOOTY_DB_USR = $(shell printenv MONGO_ATLAS_USERNAME)
 SNOOTY_DB_PWD = $(shell printenv MONGO_ATLAS_PASSWORD)
 
@@ -31,9 +30,8 @@ next-gen-html:
 	cd snooty; \
 	touch .env.production; \
 	echo "GATSBY_SITE=${PROJECT}" >> .env.production; \
-	echo "PARSER_USER=${USER}" >> .env.production; \
-	echo "PARSER_BRANCH=${GIT_BRANCH}" >> .env.production; \
-	echo "GATSBY_CONTENT_BRANCH=${GIT_BRANCH}" >> .env.production; \
+	echo "GATSBY_PARSER_USER=${USER}" >> .env.production; \
+	echo "GATSBY_PARSER_BRANCH=${GIT_BRANCH}" >> .env.production; \
 	npm run build; \
 	cp -r ${REPO_DIR}/snooty/public ${REPO_DIR};
 
