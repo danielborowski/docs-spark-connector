@@ -1,5 +1,5 @@
 ===========================
-MongoDB HELLO WORLD for Spark
+MongoDB Connector for Spark
 ===========================
 
 .. default-domain:: mongodb
