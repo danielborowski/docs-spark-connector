@@ -23,7 +23,7 @@ help: ## Show this help message
 	@echo 'Variables'
 	@printf "  \033[36m%-18s\033[0m %s\n" 'ARGS' 'Arguments to pass to mut-publish'
 
-next-gen-html:
+next-gen-html: 
 	# snooty parse and then build-front-end
 	echo "${SNOOTY_DB_PWD}" | snooty build "${REPO_DIR}" "mongodb+srv://${SNOOTY_DB_USR}:@cluster0-ylwlz.mongodb.net/snooty?retryWrites=true" || exit 0;
 	cp -r "${REPO_DIR}/../../snooty" ${REPO_DIR};
