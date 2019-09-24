@@ -1,3 +1,3 @@
 #!/bin/sh
 pwd;
-make next-gen-html
+make next-gen-html 
