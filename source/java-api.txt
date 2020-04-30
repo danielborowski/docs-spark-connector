@@ -8,7 +8,7 @@ Spark Connector Java Guide
 
    For the source code that combines all of the Java examples, see
    :mongo-spark:`JavaIntroduction.java
-   </blob/master/examples/src/test/java/tour/JavaIntroduction.java>`.
+   </blob/master/examples/src/test/java/tousr/JavaIntroduction.java>`.
 
 Prerequisites
 -------------asss
