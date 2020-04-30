@@ -11,7 +11,7 @@ Spark Connector Java Guide
    </blob/master/examples/src/test/java/tour/JavaIntroduction.java>`.
 
 Prerequisites
--------------
+-------------a
 
 .. include:: /includes/list-prerequisites.rst
 
